@@ -1,0 +1,119 @@
+/*Setting the font to look like a mix of digital and typewriter*/
+@font-face {
+    font-family: gameFont;
+    src: url(monaco.ttf);
+}
+/* 
+Set the background to black
+Set the main text color of the page to white
+Center the game area in the viewport
+*/
+body {
+    background-color: black;
+    color: white;
+    font-family: gameFont;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.title {
+    font-size: 150%;
+}
+#modern-adventure-game {
+    display: flex;
+    flex-direction: column;
+    width: 66%;
+    border-radius: 10px;
+    align-items: center;
+    background-color: rgb(250, 250, 250, 0.1);
+    padding: 20px;
+}
+#output {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 40vh;
+    width: 90%;
+    color: lightgreen;
+    background: rgb(10, 10, 10, 0.5);
+    border-radius: 10px;
+    margin-bottom: 25px;
+    padding: 20px;
+    font-size: x-large;
+    overflow: auto;
+}
+#output::-webkit-scrollbar {
+    width: 1vw;
+}
+#output::-webkit-scrollbar-thumb {
+    background-color: #5A5A5A;
+}
+#output::-webkit-scrollbar-track {
+    background-color: lightgray;
+}
+#input-area {
+    background: lightgray;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+}
+#input-text {
+    font-family: gameFont;
+    font-size: x-large;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+    background: none;
+    width: 80%;
+}
+#input-button {
+    font-family: gameFont;
+    font-size: 25px;
+    border-radius: 5px;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+#user-info {
+    margin-top: 25px;
+    width: 100%;
+}
+#anxiety {
+    font-size: xxx-large;
+}
+/* Change the color of the text of your Anxiety Level
+depending on the level: minimal, low, medium, high, destructive. */
+#anxiety-level[data-level="minimal"] {
+    color: white;
+}
+#anxiety-level[data-level="low"] {
+    color: green;
+}
+#anxiety-level[data-level="medium"] {
+    color: orange;
+}
+#anxiety-level[data-level="high"] {
+    color: orangered;
+}
+#anxiety-level[data-level="destructive"] {
+    color: black;
+}
+.inventory {
+    margin-top: 10px;
+    font-size: xx-large;
+}
+/*
+#inventory-list {
+
+}
+#inventory-item {
+
+}
+*/
