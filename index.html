@@ -6,7 +6,7 @@
     <title>Modern Adventure</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="full-screen">
     <!-- Create an area for the info text. This is where you will get your information and responses. -->
     <!-- Make the beginning info text "Welcome to Modern Adventure. You have woken up in a subway car with no memory, What would you like to do?"-->
     <!-- Create an area for the users input. This is where you will be able to type in what you want to do. -->
@@ -19,24 +19,27 @@
             <p>
                 Welcome to Modern Adventure. To bring excitement and a small thrill to young adults, video games used to be about battles and fantasy, 
                 but nowadays anxiety is everywhere and that gives you all the thrill and excitement you could ask for. In todays Modern Adventure, 
-                you are an anxiety ridden individual tasked with going to your local convenience store and purchasing snacks and drinks for your friends 
+                you are an anxiety ridden individual tasked with gathering supplies for a small party with your friends 
                 before your anxiety reaches the boiling point and you cancel your friend hangout AGAIN...
-            </p>
-            <p>
-                To begin, like most of us nowadays, you'll need to ask for help. If you can bring yourself to do it, type help.
             </p>
         </div>
         <div id="input-area">
-            <input type="text" name="input-text" id="input-text">
-            <button id="input-button">Enter</button>
+            <button class="input-button" id="input-button-1">Start the game. (+ 10 Anxiety for taking the first step)</button>
+            <button class="input-button" id="input-button-2">Wait until the game starts itself. (- 30 minutes until the game gets tired of waiting)</button>
+            <button class="input-button" id="input-button-3">Let Anxiety win and do something else. (+ 100 Anxiety and - 100 hours. AUTO LOSE)</button>
         </div>
         <div id="user-info">
             <div id="name">Name: <span id="user-name"></span></div>
-            <!-- Create anxiety level -->
-            <span id="anxiety">Anxiety Level: <strong><span id="anxiety-level">20</span></strong></span>
+            <div id="user-stats">
+                <!-- Create anxiety level -->
+                <span id="anxiety">Anxiety Level: <strong><span id="anxiety-level">0</span></strong></span>
+                <!-- Create a time limit -->
+                <span id="time-limit">Time Left: <span id="hours-left">8</span>:<span id="minutes-left">45</span> </span>
+            </div>
             <!-- Add an inventory -->
             <div class="inventory">
                 <label for="inventory-list">Inventory</label>
+                
                 <ul id="inventory-list">
                     <!-- Create a list item for each inventory item that has the quantity and name of the item -->
                     <li id="inventory-item"><span id="item-quantity"></span> Credit Card</li>
@@ -45,5 +48,6 @@
             </div>
         </div>
     </div>
+    <script src="script.js" defer></script>
 </body>
 </html>

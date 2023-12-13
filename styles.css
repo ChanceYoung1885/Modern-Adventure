@@ -24,7 +24,9 @@ body {
 #modern-adventure-game {
     display: flex;
     flex-direction: column;
+    height: 90%;
     width: 66%;
+    max-width: 750px;
     border-radius: 10px;
     align-items: center;
     background-color: rgb(250, 250, 250, 0.1);
@@ -54,14 +56,12 @@ body {
     background-color: lightgray;
 }
 #input-area {
-    background: lightgray;
-    border: none;
+    background: none;
     outline: none;
     border-radius: 5px;
     width: 100%;
-    height: 5vh;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 }
 #input-text {
     font-family: gameFont;
@@ -72,45 +72,58 @@ body {
     background: none;
     width: 80%;
 }
-#input-button {
+.input-button {
     font-family: gameFont;
     font-size: 25px;
     border-radius: 5px;
-    background: none;
-    border: none;
-    outline: none;
+    background: lightgray;
+    border: 0.5px solid black;
     cursor: pointer;
 }
 #user-info {
     margin-top: 25px;
     width: 100%;
 }
-#anxiety {
+#user-stats {
+    display: flex;
+    justify-content: space-between;
+}
+#anxiety, #time-limit {
     font-size: xxx-large;
 }
 /* Change the color of the text of your Anxiety Level
-depending on the level: minimal, low, medium, high, destructive. */
-#anxiety-level[data-level="minimal"] {
+depending on the level: minimal, low, medium, high, destructive. 
+*/
+#anxiety-level[anxiety-num ="minimal"] {
     color: white;
 }
-#anxiety-level[data-level="low"] {
+#anxiety-level[anxiety-num ="low"] {
     color: green;
 }
-#anxiety-level[data-level="medium"] {
+#anxiety-level[anxiety-num ="medium"] {
     color: orange;
 }
-#anxiety-level[data-level="high"] {
+#anxiety-level[anxiety-num ="high"] {
     color: orangered;
 }
-#anxiety-level[data-level="destructive"] {
+#anxiety-level[anxiety-num ="destructive"] {
     color: black;
 }
 .inventory {
     margin-top: 10px;
     font-size: xx-large;
 }
+/* Displaying how the end game screen looks
+*/
+#game-over {
+    font-size: xx-large;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 /*
-#inventory-list {
+ul#inventory-list {
 
 }
 #inventory-item {
