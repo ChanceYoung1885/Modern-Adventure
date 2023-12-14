@@ -49,4 +49,12 @@ function updateTimeLimit(timeLoss) {
         gameOver();
     }
 }
+//Function that adds the new output to the beginning of the output area
+//Adding at the beginning avoids CSS problem with scrollbar
+function updateOutput(outputText) {
+    const currentOutput = document.getElementById('output');
+    const newParagraph = document.createElement('p');
+    newParagraph.textContent = outputText;
 
+    currentOutput.insertBefore(newParagraph, output.firstChild);
+}

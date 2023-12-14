@@ -35,8 +35,7 @@ body {
 }
 #output {
     display: flex;
-    flex-direction: column;
-    justify-content: end;
+    flex-direction: column-reverse;
     height: 40vh;
     width: 90%;
     color: lightgreen;
@@ -46,6 +45,11 @@ body {
     padding: 20px;
     font-size: x-large;
     overflow: auto;
+}
+/* Setting the output content on the bottom without breaking scrollbar
+*/
+#output > :first-child {
+    margin-top: auto !important;
 }
 #output::-webkit-scrollbar {
     width: 1vw;
