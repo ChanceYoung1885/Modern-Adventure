@@ -24,7 +24,8 @@ body {
 #modern-adventure-game {
     display: flex;
     flex-direction: column;
-    height: 90%;
+    height: 90vh;
+    min-height: 800px;
     width: 66%;
     max-width: 750px;
     border-radius: 10px;
@@ -79,6 +80,7 @@ body {
     background: lightgray;
     border: 0.5px solid black;
     cursor: pointer;
+    height: 50px;
 }
 #user-info {
     margin-top: 25px;
