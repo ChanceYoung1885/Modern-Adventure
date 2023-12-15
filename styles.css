@@ -47,8 +47,10 @@ body {
     overflow: auto;
 }
 /* Setting the output content on the bottom without breaking scrollbar
+ Set to last child because the order is reversed, first child causes
+ a gap between the first two children
 */
-#output > :first-child {
+#output > :last-child {
     margin-top: auto !important;
 }
 #output::-webkit-scrollbar {

@@ -58,3 +58,28 @@ function updateOutput(outputText) {
 
     currentOutput.insertBefore(newParagraph, output.firstChild);
 }
+
+// Making the buttons functional by adding event listeners that cause something to happen
+// Let the whole page be loaded first
+document.addEventListener('DOMContentLoaded', function() {
+    const button1 = document.getElementById('input-button-1');
+    const button2 = document.getElementById('input-button-2');
+    const button3 = document.getElementById('input-button-3');
+
+
+    button1.addEventListener('click', function() {
+        //Running option 1 select
+        firstOptionSelected();
+    });
+    button2.addEventListener('click', function() {
+        secondOptionSelected();
+    });
+    button3.addEventListener('click', function() {
+        thirdOptionSelected();
+    })
+});
+
+// Making the functions for each button
+function firstOptionSelected() {
+    //Adds to output with 
+}
