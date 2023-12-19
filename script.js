@@ -77,17 +77,17 @@ const currentOption2 = document.getElementById('input-button-2');
 const currentOption3 = document.getElementById('input-button-3');
 
 // Functions to update the Options and Option Values
-function updateOptions(optionText1, optionText2, optionText3) {
-    currentOption1.textContent = optionText1;
-    currentOption2.textContent = optionText2;
-    currentOption3.textContent = optionText3;
+function updateOptions(optionText) {
+    currentOption1.textContent = optionText[0];
+    currentOption2.textContent = optionText[1];
+    currentOption3.textContent = optionText[2];
 }
 
-function updateOptionValues(optionValues1, optionValues2, optionValues3, optionValues4) {
-    currentOption1.setAttribute('anxiety-choice', optionValues1);
-    currentOption2.setAttribute('time-choice', optionValues2);
-    currentOption3.setAttribute('anxiety-choice', optionValues3);
-    currentOption3.setAttribute('time-choice', optionValues4);
+function updateOptionValues(optionValues) {
+    currentOption1.setAttribute('anxiety-choice', optionValues[0]);
+    currentOption2.setAttribute('time-choice', optionValues[1]);
+    currentOption3.setAttribute('anxiety-choice', optionValues[2[0]]);
+    currentOption3.setAttribute('time-choice', optionValues[2[1]]);
 }
 
 // Making the buttons functional by adding event listeners that cause something to happen
@@ -123,7 +123,7 @@ function Encounter(name, output, newOptions, newOptionValues) {
     this.output = output;
     this.newOptions = newOptions;
     this.newOptionValues = newOptionValues;
-    encounters.push(this.name);
+    encounters.push(this);
 }
 
 // Setting the current encounter position to 0 for the start of game
@@ -138,8 +138,8 @@ function runNextEncounter() {
         // Update necessary elements
         updateOutput(currentEncounter.output);
         updateTimeLimit(20);
-        updateOptions(currentEncounter.newOptions[0], currentEncounter.newOptions[1], currentEncounter.newOptions[2]);
-        updateOptionValues(currentEncounter.newOptionValues[0], currentEncounter.newOptionValues[1], currentEncounter.newOptionValues[2[0]], currentEncounter.newOptionValues[2[1]])
+        updateOptions(currentEncounter.newOptions);
+        updateOptionValues(currentEncounter.newOptionValues)
 
         // Move variable to next array
         currentEncounterPosition++;
@@ -177,4 +177,106 @@ const secondEncounter = new Encounter(
     [10, 30, [5, 15]]
 )
 
+const thirdEncounter = new Encounter(
+    // Encounter Name
+    "A 'Helpful' Friend",
+    // New Output
+    "As you enter the parking lot of your apartment complex you run into a friend that lives in your building. After a small conversation about your day they offer to help set things up while you are out to save you the headache of doing it when you get back.",
+    // New Options
+    ["Sure, they have their own style so you know it's not gonna be how you want but at least it'll get done quicker. (+ 10 Anxiety)", 
+    "Politely decline and remind yourself you'll have to get home a little sooner. (- 30 minutes)", 
+    "Accept their help but remind them it's your place anf your party so it should look how you want it to. (+ 10 Anxiety, + 15 minutes)"],
+    // New Option Values
+    [10, 30, [10, -15]]
+)
 
+const fourthEncounter = new Encounter(
+    // Encounter Name
+    "I believe I know the way",
+    // New Output
+    "You get in your car, load up your maps, and see that there's traffic on the way to the mall. From what you remember there's a quicker way to go that almost never has traffic, and if you head that way you'll get there in the time you expected in the beginning.",
+    // New Options
+    ["You're pretty confident the route you know is quicker but that doesn't mean that you won't be worried the entire time that you're wrong. (+ 10 Anxiety)", 
+    "You feel a lot safer just going off of what the internet says since it has so much info. There can't be a quicker way can there? (- 45 minutes)", 
+    "There's nothing wrong with trying something out and changing if it doesn't work. You can head your way and change direction if it seems too slow. (+5 Anxiety, -20 minutes)"],
+    // New Option Values
+    [10, 45, [5, 20]]
+)
+
+const fifthEncounter = new Encounter(
+    // Encounter Name
+    "That is not Parallel",
+    // New Output
+    "You arrive at the mall and the parking lot is a sea of colored metal. As you pull in you immediately find a parking space but you need to parallel park to get in and you don't really remember exactly how to do it. How much longer will it take to find a spot.",
+    // New Options
+    ["You remember enough about how to do it as long as you put all your focus into it and try not to panic. (+ 10 Anxiety)",
+    "You're better off looking for another spot. There're so many people coming and going that spots have to be all around. It can't take that long right? (- 20 minutes)",
+    "You can do it, you got this. Just take a few minutes to psych yourself up even though it's making you anxious just thinking about parallel... oh look a spot opened up. (+ 5 Anxiety, - 5 minutes)"],
+    // New Option Values
+    [10, 20, [5, 5]]
+)
+
+const sixthEncounter = new Encounter(
+    // Encounter Name
+    "You don't have any in the back?",
+    // New Output
+    "Thank god you got the parking over with, but that doesn't mean that the problems are done with. You got your decorations but when you were looking for snacks, it seems like the appetizer plate your friends love isn't on the shelf at the first store you went to. You know they have them on the other side of the mall but that'll add so much time.",
+    // New Options
+    ["I'll just grab the next best thing and I'm sure no one will notice the difference. I'll just feel like I'm lying to everyone. (+ 10 Anxiety)",
+    "If I run now I can get it and grab the board game from a store over there and it shouldn't add too much time. (- 30 minutes)",
+    "If I ask an employee they might have some in the back or somewhere else in the store, just gotta build the courage. (+ 5 Anxiety, - 15 minutes)"],
+    // New Option Values
+    [10, 30, [5, 15]]
+)
+
+const seventhEncounter = new Encounter(
+    // Encounter Name
+    "That'll teach you a lesson",
+    // New Output
+    "As you grab the snack and get ready to go pay, a familiar face comes around the corner, and for the first time in years you are face to face with your kindergarten teacher.",
+    // New Options
+    ["I don't want to be rude but I don't have the time. I have to excuse myself before they start talking! (+ 15 Anxiety)",
+    "I have to be nice and just listen to what they have to say and then make my way towards the exit. They can't have that much to talk about right? (- 30 minutes)",
+    "All I have to do is come up with a good enough reason to move along. I could just be honest if I don't come up with anything quick too. (+ 5 Anxiety, - 10 minutes"],
+    // New Option Values
+    [15, 30, [ 5, 10]]
+)
+
+const eighthEncounter = new Encounter(
+    // Encounter Name
+    "This must be where everyone went",
+    // New Output
+    "After talking to your old teacher you head to the checkout and see that all of the lines are way to long and it's just going to add more time to your trip.",
+    // New Options
+    ["I could do self checkout. There's almost no one over there but I know that some worker is gonna be watching me the entire time and that just sucks. (+ 10 Anxiety)",
+    "I think I'll just stay in the closest line since they all look about the same length. Long lines are a valid excuse right? (- 20 minutes)",
+    "If I asked the worker to show me how the self checkout worked I would feel less like they think I'm stealing things, but it might take some extra time. (+ 5 Anxiety, - 10 minutes)"],
+    // New Option Values
+    [10, 20, [5, 10]]
+)
+
+const ninthEncounter = new Encounter(
+    // Encounter Name
+    "Can't make everyone happy.",
+    // New Output
+    "Now that you have your decorations and snacks, you just need to choose a board game for the night. Decisions are easy right?.. Right?",
+    // New Options
+    ["If I choose monopoly most people will be happy since they like it but I know it'll turn into an argument or something hilarious and I'm not sure I'm ready to know which. (+ 10 Anxiety)",
+    "I'll just make a couple calls and send a few texts to make sure everyone agrees on what we should play. I should've done this sooner but at least it'll go well. (-30 minutes)",
+    "Johan knows pretty much what everyone likes. I'll just send him a quick text and when he responds I'll get whatever he says. (+ 10 Anxiety, - 10 minutes)"],
+    // New Option Values
+    [10, 30, [10, 10]]
+)
+
+const tenthEncounter = new Encounter(
+    // Encounter Name
+    "Anything else. Please",
+    // New Output
+    "Heading back to your car you run into a familiar face that you rather would not've seen. You could've avoided them if they hadn't seen you first.",
+    // New Options
+    ["Say 'Hi' and let them know you would love to talk but you're in a rush to head home offer to exchange numbers if they seem like they are wanting to talk. (+ 15 Anxiety)",
+    "Just because they saw you doesn't mean that you saw them. Act like you didn't and head back into the store and wander around a little until you know the coast is clear. (- 15 minutes)",
+    "The nice thing would be to say hi and if a conversation happens it happens. You don't have to be thrilled, just stay calm a little. (+ 10 Anxiety, - 10 minutes)"],
+    // New Option Values
+    [15, 15, [10, 10]]
+)
