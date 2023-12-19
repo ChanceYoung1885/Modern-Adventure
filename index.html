@@ -13,9 +13,7 @@
     <!-- These 3 will probably all be in a form. Info will be a div and input will be an input. -->
     <div id="modern-adventure-game">
         <div class="title"> <h1> Modern Adventure</h1></div>
-        <div id="output">
-        <!--
-        -->
+        <div id="output" encounter-position="0">
             <p>
                 Welcome to Modern Adventure. To bring excitement and a small thrill to young adults, video games used to be about battles and fantasy, 
                 but nowadays anxiety is everywhere and that gives you all the thrill and excitement you could ask for. In todays Modern Adventure, 
@@ -26,7 +24,7 @@
         <div id="input-area">
             <button class="input-button" id="input-button-1" anxiety-choice="10">Start the game. (+ 10 Anxiety for taking the first step)</button>
             <button class="input-button" id="input-button-2" time-choice="30">Wait until the game starts itself. (- 30 minutes until the game gets tired of waiting)</button>
-            <button class="input-button" id="input-button-3" anxiety-choice="50" time-choice="100">Let Anxiety win and do something else. (+ 100 Anxiety - AUTO LOSE)</button>
+            <button class="input-button" id="input-button-3" anxiety-choice="100" time-choice="1000">Let Anxiety win and do something else. (+ 100 Anxiety, - 1000 minutes, AUTO LOSE)</button>
         </div>
         <div id="user-info">
             <div id="name">Name: <span id="user-name"></span></div>
@@ -37,15 +35,15 @@
                 <span id="time-limit">Time Left: <span id="hours-left">8</span>:<span id="minutes-left">45</span> </span>
             </div>
             <!-- Add an inventory -->
-            <div class="inventory">
+            <!-- <div class="inventory">
                 <h1>Inventory</h1>
                 
                 <ul id="inventory-list">
-                    <!-- Create a list item for each inventory item that has the quantity and name of the item -->
+                    <!-- Create a list item for each inventory item that has the quantity and name of the item
                     <li id="inventory-item"><span id="item-quantity"></span> Credit Card</li>
                     <li id="inventory-item"><span id="item-quantity"></span> Smart Phone</li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </div>
     <script src="script.js" defer></script>

@@ -1,16 +1,31 @@
+
+localStorage.setItem('beginning screen', document.getElementById('full-screen').innerHTML);
 // Game over function
 function gameOver() {
     const clearTheScreen = document.getElementById('full-screen');
     clearTheScreen.innerHTML = 
-    "<div id='game-over'> <h1>Mass Text: </h1><h2>Sorry guys, I had an emergency come up and have to cancel tonight. Rain check?</h2><button id='restart-button'>Try again?</button><div>";
+    "<div id='game-over'> <h1>Mass Text: </h1><h2>Sorry guys, I had an emergency come up and have to cancel tonight. Rain check?</h2><button id='restart-button'>Try again?</button><div><script src='script.js' defer></script>";
 }
 
 // Game win function
 function youWin() {
+    const endGameStats = document.getElementById('user-stats').innerHTML;
     const clearTheScreen = document.getElementById('full-screen');
     clearTheScreen.innerHTML = 
-    "<div id='game-over'> <h1>How it went: </h1><h2>Turns out you were worried for nothing. Everyone had a great time and they can't wait until you host again, but you can. Haha...</h2><button id='restart-button'>Try again?</button><div>";
+    "<div id='game-over'> <h1>How it went: </h1><h2>Turns out you were worried for nothing. Everyone had a great time and they can't wait until you host again, but you can. Haha...</h2><button id='restart-button'>Try again?</button><div>" + endGameStats + "<script src='script.js' defer></script>";
+    const restartButton = document.getElementById('restart-button');
+    restartButton.addEventListener('click', function() {
+        startOver();
+    })
 }
+
+// Setting the screen to the beginning
+function startOver() {
+    const resetScreen = document.getElementById('full-screen');
+    resetScreen.innerHTML = localStorage.getItem('beginning screen');
+}
+
+// Now have it run when you click try again
 
 // Function that changes the Anxiety Level and the color of its text to better represent the urgency and has a game over function
 function updateAnxietyLevel(anxietyMod) {
@@ -86,8 +101,8 @@ function updateOptions(optionText) {
 function updateOptionValues(optionValues) {
     currentOption1.setAttribute('anxiety-choice', optionValues[0]);
     currentOption2.setAttribute('time-choice', optionValues[1]);
-    currentOption3.setAttribute('anxiety-choice', optionValues[2[0]]);
-    currentOption3.setAttribute('time-choice', optionValues[2[1]]);
+    currentOption3.setAttribute('anxiety-choice', optionValues[2][0]);
+    currentOption3.setAttribute('time-choice', optionValues[2][1]);
 }
 
 // Making the buttons functional by adding event listeners that cause something to happen
@@ -126,6 +141,7 @@ function Encounter(name, output, newOptions, newOptionValues) {
     encounters.push(this);
 }
 
+
 // Setting the current encounter position to 0 for the start of game
 let currentEncounterPosition = 0;
 
@@ -146,6 +162,7 @@ function runNextEncounter() {
     } else {
         // If there are no more encounters than you win the game
         youWin();
+        currentEncounterPosition = 0
     }
 }
 

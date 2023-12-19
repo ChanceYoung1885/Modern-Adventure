@@ -150,6 +150,7 @@ ul#inventory-list {
     text-align: center;
 }
 #restart-button {
+    cursor: pointer;
     width: 40vh;
     height: 10vh;
     background-color: #5A5A5A;
@@ -157,4 +158,5 @@ ul#inventory-list {
     border-radius: 5px;
     font-family: gameFont;
     font-size: larger;
+    margin-bottom: 25px;
 }
