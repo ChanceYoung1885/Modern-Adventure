@@ -101,18 +101,12 @@ function updateOptions(optionText) {
     const currentOption1 = document.getElementById('input-button-1');
     const currentOption2 = document.getElementById('input-button-2');
     const currentOption3 = document.getElementById('input-button-3');
-    const currentOption1 = document.getElementById('input-button-1');
-    const currentOption2 = document.getElementById('input-button-2');
-    const currentOption3 = document.getElementById('input-button-3');
     currentOption1.textContent = optionText[0];
     currentOption2.textContent = optionText[1];
     currentOption3.textContent = optionText[2];
 }
 
 function updateOptionValues(optionValues) {
-    const currentOption1 = document.getElementById('input-button-1');
-    const currentOption2 = document.getElementById('input-button-2');
-    const currentOption3 = document.getElementById('input-button-3');
     const currentOption1 = document.getElementById('input-button-1');
     const currentOption2 = document.getElementById('input-button-2');
     const currentOption3 = document.getElementById('input-button-3');
@@ -144,9 +138,7 @@ function initializeButtons() {
 };
 
 // Let the whole page be loaded first
-document.addEventListener('DOMContentLoaded', function() {
-    initializeButtons();
-});
+document.addEventListener('DOMContentLoaded', initializeButtons());
 
 // Create an array to reference the encounters by name and give a number of encounters by checking the array length
 const encounters = [];
