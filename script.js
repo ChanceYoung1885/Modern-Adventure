@@ -5,6 +5,10 @@ function gameOver() {
     const clearTheScreen = document.getElementById('full-screen');
     clearTheScreen.innerHTML = 
     "<div id='game-over'> <h1>Mass Text: </h1><h2>Sorry guys, I had an emergency come up and have to cancel tonight. Rain check?</h2><button id='restart-button'>Try again?</button><div><script src='script.js' defer></script>";
+    const restartButton = document.getElementById('restart-button');
+    restartButton.addEventListener('click', function() {
+        startOver();
+    })
 }
 
 // Game win function
@@ -12,17 +16,19 @@ function youWin() {
     const endGameStats = document.getElementById('user-stats').innerHTML;
     const clearTheScreen = document.getElementById('full-screen');
     clearTheScreen.innerHTML = 
-    "<div id='game-over'> <h1>How it went: </h1><h2>Turns out you were worried for nothing. Everyone had a great time and they can't wait until you host again, but you can. Haha...</h2><button id='restart-button'>Try again?</button><div>" + endGameStats + "<script src='script.js' defer></script>";
+    "<div id='game-over'> <h1>How it went: </h1><h2>Turns out you were worried for nothing. Everyone had a great time and they can't wait until you host again, but you can. Haha...</h2><button id='restart-button'>Try again?</button><div>" +  endGameStats + "<script src='script.js' defer></script>";
     const restartButton = document.getElementById('restart-button');
     restartButton.addEventListener('click', function() {
         startOver();
     })
 }
 
+
 // Setting the screen to the beginning
 function startOver() {
     const resetScreen = document.getElementById('full-screen');
     resetScreen.innerHTML = localStorage.getItem('beginning screen');
+    initializeButtons();
 }
 
 // Now have it run when you click try again
@@ -87,18 +93,21 @@ function updateOutput(outputText) {
 }
 
 // Option variables
-const currentOption1 = document.getElementById('input-button-1');
-const currentOption2 = document.getElementById('input-button-2');
-const currentOption3 = document.getElementById('input-button-3');
 
 // Functions to update the Options and Option Values
 function updateOptions(optionText) {
+    const currentOption1 = document.getElementById('input-button-1');
+    const currentOption2 = document.getElementById('input-button-2');
+    const currentOption3 = document.getElementById('input-button-3');
     currentOption1.textContent = optionText[0];
     currentOption2.textContent = optionText[1];
     currentOption3.textContent = optionText[2];
 }
 
 function updateOptionValues(optionValues) {
+    const currentOption1 = document.getElementById('input-button-1');
+    const currentOption2 = document.getElementById('input-button-2');
+    const currentOption3 = document.getElementById('input-button-3');
     currentOption1.setAttribute('anxiety-choice', optionValues[0]);
     currentOption2.setAttribute('time-choice', optionValues[1]);
     currentOption3.setAttribute('anxiety-choice', optionValues[2][0]);
@@ -106,14 +115,11 @@ function updateOptionValues(optionValues) {
 }
 
 // Making the buttons functional by adding event listeners that cause something to happen
-// Creating a variable for each button
-const button1 = document.getElementById('input-button-1');
-const button2 = document.getElementById('input-button-2');
-const button3 = document.getElementById('input-button-3');
-// Let the whole page be loaded first
-document.addEventListener('DOMContentLoaded', function() {
-
-
+function initializeButtons() {
+    // Creating a variable for each button
+    const button1 = document.getElementById('input-button-1');
+    const button2 = document.getElementById('input-button-2');
+    const button3 = document.getElementById('input-button-3');
     button1.addEventListener('click', function() {
         updateAnxietyLevel(parseInt(button1.getAttribute('anxiety-choice')));
         runNextEncounter();
@@ -126,7 +132,12 @@ document.addEventListener('DOMContentLoaded', function() {
         updateAnxietyLevel(parseInt(button3.getAttribute('anxiety-choice')));
         updateTimeLimit(parseInt(button3.getAttribute('time-choice')));
         runNextEncounter();
-    })
+    });
+};
+
+// Let the whole page be loaded first
+document.addEventListener('DOMContentLoaded', function() {
+    initializeButtons();
 });
 
 // Create an array to reference the encounters by name and give a number of encounters by checking the array length
