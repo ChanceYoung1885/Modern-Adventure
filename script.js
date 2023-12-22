@@ -1,4 +1,9 @@
+// Creating a local storage key for High Scores and the start screen
+if (localStorage.getItem('High Scores')) {
 
+} else {
+    localStorage.setItem('High Scores', JSON.stringify([]))
+}
 localStorage.setItem('beginning screen', document.getElementById('full-screen').innerHTML);
 // Game over function
 function gameOver() {
@@ -13,16 +18,62 @@ function gameOver() {
 
 // Game win function
 function youWin() {
+    // Adding the current score to a list of High Scores
+    const anxiety = parseInt(document.getElementById('anxiety-level').innerHTML);
+    const hours = parseInt(document.getElementById('hours-left').innerHTML);
+    const minutes = parseInt(document.getElementById('minutes-left').innerHTML);
+    updateHighScores(anxiety, hours, minutes);
+
+    // Resetting the look of the screen
     const endGameStats = document.getElementById('user-stats').innerHTML;
     const clearTheScreen = document.getElementById('full-screen');
     clearTheScreen.innerHTML = 
     "<div id='game-over'> <h1>How it went: </h1><h2>Turns out you were worried for nothing. Everyone had a great time and they can't wait until you host again, but you can. Haha...</h2><button id='restart-button'>Try again?</button><div>" +  endGameStats + "<script src='script.js' defer></script>";
     const restartButton = document.getElementById('restart-button');
+    displayHighScores();
     restartButton.addEventListener('click', function () {
         startOver();
     })
 }
 
+// Let's create the high score board
+
+function displayHighScores() {
+    const highScores = JSON.parse(localStorage.getItem('High Scores'));
+    highScores.forEach(element => {
+        const gameOverScreen = document.getElementById('full-screen');
+        const anxiety = element[0];
+        const hours = element[1][0];
+        const minutes = element[1][1];
+        const anxietyScore = document.createElement('span');
+        anxietyScore.setAttribute('id', 'anxiety-high-score');
+        anxietyScore.innerHTML = 'Anxiety:' + anxiety;
+        const timeScore = document.createElement('span');
+        timeScore.setAttribute('id', 'time-high-score');
+        if (minutes < 10) {
+            timeScore.innerHTML = 'Time Left:' + hours + ':0' + minutes;
+        } else {
+            timeScore.innerHTML = 'Time Left:' + hours + ':' + minutes;
+        }
+        const score = document.createElement('div');
+        score.setAttribute('id', 'high-scores');
+        score.append(anxietyScore);
+        score.append(timeScore);
+        gameOverScreen.append(score);
+    });
+}
+
+
+// Add anxiety level and time left to High scores
+function updateHighScores(anxiety, hours, minutes) {
+    let timeLeft = [hours, minutes];
+    let newScore = [anxiety, timeLeft];
+
+    // Parse, push, and Stringify
+    let highScoreList = JSON.parse(localStorage.getItem('High Scores'));
+    highScoreList.push(newScore);
+    localStorage.setItem('High Scores', JSON.stringify(highScoreList));
+}
 
 
 // Setting the screen to the beginning

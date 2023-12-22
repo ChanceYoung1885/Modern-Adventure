@@ -99,6 +99,14 @@ body {
 #anxiety, #time-limit {
     font-size: xxx-large;
 }
+#high-scores {
+    display: flex;
+    width: 90vb;
+    justify-content: space-between;
+}
+#anxiety-high-score, #time-high-score {
+    font-size: xxx-large;
+}
 /* Change the color of the text of your Anxiety Level
 depending on the level: minimal, low, medium, high, destructive. 
 */
